@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+<!--
+    <bean id="helloWorld" class="com.winchampion.foo.HelloWorld"
+          scope="singleton" init-method="init" destroy-method="destroy">
+        <property name="message" value="Hello World!" />
+    </bean>
+
+    <bean id="initHelloWorld" class="com.winchampion.foo.InitHelloWorld" />
+
+    <bean id="helloWorld1" class="com.winchampion.foo.extend.HelloWorld">
+        <property name="message1" value="message1"/>
+        <property name="message2" value="message2"/>
+    </bean>
+
+    <bean id="helloChina" class="com.winchampion.foo.extend.HelloChina" parent="helloWorld1">
+        <property name="message1" value="chinaMessage1"/>
+        <property name="message3" value="chinaMessage3"/>
+    </bean>-->
+<!--
+
+    <bean id="spellChecker" class="com.winchampion.foo.SpellChecker" />
+
+    <bean id="textEditor" class="com.winchampion.foo.TextEditor">
+        <constructor-arg ref="spellChecker"/>
+    </bean>
+-->
+<!--
+    <bean id="foo" class="com.winchampion.foo.constructor.Foo">
+        <constructor-arg index="1" value="100"/>
+        <constructor-arg index="0" value="yangyiwei"/>
+    </bean>-->
+<!--
+    <bean id="John" class="com.winchampion.foo.p.Person"
+            p:name="John"
+            p:spouse-ref="Selina">
+    </bean>
+
+    <bean id="Selina" class="com.winchampion.foo.p.Person"
+            p:name="Selina"
+            p:spouse-ref="John">
+    </bean>-->
+<!--
+    <bean id="textEditor" class="com.winchampion.foo.TextEditor">
+        <property name="spellChecker">
+            <bean id="spellChecker" class="com.winchampion.foo.SpellChecker"/>
+        </property>
+    </bean>-->
+ <!--   <bean id="javaCollection" class="com.winchampion.foo.collection.JavaCollection">
+        <property name="addressList">
+            <list>
+                <value>INDIA</value>
+                <value>CHINA</value>
+                <value>AMERICA</value>
+                <value>UK</value>
+            </list>
+        </property>
+        <property name="addressSet">
+            <set>
+                <value>yangyiwei</value>
+                <value>huhaojie</value>
+                <value>xuxingyuan</value>
+            </set>
+        </property>
+        <property name="addressMap">
+            <map>
+                <entry key="1" value="yangyalan"/>
+                <entry key="2" value="lujiali"/>
+                <entry key="3" value="zhangcong"/>
+            </map>
+        </property>
+        <property name="addressProp">
+            <props>
+                <prop key="jdbc.driver">oracle</prop>
+                <prop key="jdbc.username">yangyiwei</prop>
+                <prop key="jdbc.password">yiweileft</prop>
+            </props>
+        </property>
+    </bean>-->
+
+    <!--<bean id="s" class="com.winchampion.foo.SpellChecker"/>
+    <bean id="textEditor" class="com.winchampion.foo.TextEditor" autowire="constructor">
+        <constructor-arg index="1" value="yangyiwei"/>
+    </bean>-->
+
+    <!-- 声明可以使用注解-->
+    <!-- @Required -->
+    <!-- @Autowired -->
+    <!-- @Qualifer -->
+    <!-- JSR-250 Annotations @Resource,@PostConstruct,@PreDestroy-->
+    <context:annotation-config/>
+
+    <!--<bean id="student" class="com.winchampion.foo.annotation.Student">
+        <property name="name" value="yangyiwei"/>
+        <property name="age" value="27" />
+    </bean>-->
+    <!--<bean id="spellChecker" class="com.winchampion.foo.SpellChecker"/>
+    <bean id="textEditor" class="com.winchampion.foo.TextEditor">
+        <constructor-arg index="1" value="yangyiwei"/>
+    </bean>-->
+
+    <!--<bean id="profile" class="com.winchampion.foo.annotation.Profile">
+    </bean>
+    <bean id="student2" class="com.winchampion.foo.annotation.Student">
+        <property name="name" value="yangyiwei"/>
+        <property name="age" value="27"/>
+    </bean>
+
+    <bean id="student1" class="com.winchampion.foo.annotation.Student">
+        <property name="name" value="huhaojie"/>
+        <property name="age" value="28"/>
+    </bean>-->
+
+    <bean id="helloWorld" class="com.winchampion.foo.HelloWorld">
+        <property name="message" value="hello world"/>
+    </bean>
+</beans>
