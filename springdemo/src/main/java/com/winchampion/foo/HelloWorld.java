@@ -18,7 +18,7 @@ public class HelloWorld {
     }
 
     public void printMessage(){
-        System.out.println("Message"+message);
+        System.out.println("Message: "+message);
     }
     @PostConstruct
     public void init(){
@@ -27,5 +27,9 @@ public class HelloWorld {
     @PreDestroy
     public void destroy(){
         System.err.println("Bean is going through destroy");
+    }
+
+    public void afterAdvice(){
+        System.out.println("after advice");
     }
 }
