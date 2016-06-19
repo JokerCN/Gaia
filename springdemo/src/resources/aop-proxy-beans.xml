@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="greetingBeforeAdvice" class="com.winchampion.aop.advice.GreetingBeforeAdvice"/>
+    <bean id="greetingAfterAdvice" class="com.winchampion.aop.advice.GreetingAfterAdvice" />
+    <bean id="target" class="com.winchampion.aop.advice.NaiveWaiter"/>
+
+    <!-- 如果proxyInterfaces有多个接口，使用List方式加载-->
+    <!--<bean id="waiter" class="org.springframework.aop.framework.ProxyFactoryBean"
+             p:proxyInterfaces="com.winchampion.aop.advice.Waiter"
+             p:interceptorNames="greetingBeforeAdvice,greetingAfterAdvice"
+             p:target-ref="target"/>-->
+
+    <!--<bean id="waiter" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="interceptorNames">
+            <list>
+                <idref bean="greetingBeforeAdvice"/>
+                <idref bean="greetingAfterAdvice" />
+            </list>
+        </property>
+    </bean>-->
+
+    <bean id="greetingAround" class="com.winchampion.aop.advice.GreetingInteceptor"/>
+
+    <bean id="waiter" class="org.springframework.aop.framework.ProxyFactoryBean"
+          p:proxyInterfaces="com.winchampion.aop.advice.Waiter"
+          p:target-ref="target"
+          p:interceptorNames="greetingAround" />
+
+    <bean id="pmonitor" class="com.winchampion.aop.introduce.ControllablePerformanceMonitor" />
+    <bean id="forumService" class="org.springframework.aop.framework.ProxyFactoryBean"
+          p:interfaces="com.winchampion.aop.introduce.Monitorable"
+          p:target-ref="forumServiceTarget"
+          p:interceptorNames="pmonitor"
+          p:proxyTargetClass="true" />
+    <bean id="forumServiceTarget" class="com.winchampion.aop.ForumServiceImpl" />
+
+</beans>

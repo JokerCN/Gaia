@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+      <!-- <context:property-placeholder location="classpath:jdbc.properties" file-encoding="utf8"/>
+       <bean id="utf8" class="java.lang.String">
+           <constructor-arg value="utf-8"/>
+       </bean>-->
+       <bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+              <property name="customEditors">
+                     <map>
+                            <entry key="com.winchampion.property.custom.Car">
+                                   <bean class="com.winchampion.property.custom.CustomCarEditor"/>
+                            </entry>
+                     </map>
+              </property>
+       </bean>
+
+       <bean class="com.winchampion.property.custom.EncryptPropertyPlaceholderConfigurer"
+               p:location="classpath:jdbc.properties"
+               p:fileEncoding="utf-8"/>
+
+       <bean id="boss" class="com.winchampion.property.custom.Boss">
+              <property name="name" value="John"/>
+              <property name="car" value="红旗CA,200,2000.00"/>
+       </bean>
+
+       <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+             destroy-method="close"
+             p:driverClassName="${jdbc.driver}"
+             p:url="${jdbc.url}"
+             p:username="${jdbc.username}"
+             p:password="${jdbc.password}"/>
+</beans>
