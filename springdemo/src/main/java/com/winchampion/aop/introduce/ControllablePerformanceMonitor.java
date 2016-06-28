@@ -11,7 +11,7 @@ import org.springframework.aop.support.DelegatingIntroductionInterceptor;
  */
 public class ControllablePerformanceMonitor extends DelegatingIntroductionInterceptor implements Monitorable{
 
-    private ThreadLocal<Boolean> MonitorStatusMap = new ThreadLocal<>();
+    private ThreadLocal<Boolean> MonitorStatusMap = new ThreadLocal<Boolean>();
 
     @Override
     public void setMonitorActive(boolean active) {

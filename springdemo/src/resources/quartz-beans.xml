@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="simpleTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean"
+          p:jobDetail-ref="jobDetail_1"
+          p:startDelay="1000"
+          p:repeatInterval="1000"
+          p:repeatCount="100">
+        <property name="jobDataAsMap">
+            <map>
+                <entry key="count" value="10"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="jobDetail_1"
+          class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean"
+          p:targetObject-ref="myService"
+          p:targetMethod="doJob"
+          p:concurrent="false"/>
+    <bean id="myService" class="com.winchampion.quartz.spring.MyService"/>
+</beans>
